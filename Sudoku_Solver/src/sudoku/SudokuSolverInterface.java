@@ -1,6 +1,6 @@
 package sudoku;
 
-public class Sudoku_interface {
+public class SudokuSolverInterface {
 	public interface SudokuSolver {
 		/** Tömmer hela sudokut */
 		void clear();
