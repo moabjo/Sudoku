@@ -1,6 +1,6 @@
 package sudoku;
 
-public class sudoku_interface {
+public class Sudoku_interface {
 	public interface SudokuSolver {
 		/** Tömmer hela sudokut */
 		void clear();
@@ -26,14 +26,14 @@ public class sudoku_interface {
 		boolean trySetNumber(int row, int col, int number);
 
 		/**
-		 * Returnerar siffran pÃ¥ raden row och kolumnen col.
+		 * Returnerar siffran på raden row och kolumnen col.
 		 * 
 		 * @throws IllegalArgumentException if row or col is outside the allowed range
 		 */
 		int getNumber(int row, int col);
 
 		/**
-		 * Tar bort siffran pÃ¥ raden row och kolumnen col.
+		 * Tar bort siffran på raden row och kolumnen col.
 		 * 
 		 * @throws IllegalArgumentException if row or col is outside the allowed range
 		 */
