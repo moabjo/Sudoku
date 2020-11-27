@@ -10,6 +10,7 @@ public class SudokuMain implements SudokuSolver {
 		sudoMx = new int[9][9];
 		// Lägg in i matrisen från grafiskt
 
+
 	}
 
 	@Override
@@ -32,27 +33,45 @@ public class SudokuMain implements SudokuSolver {
 	public boolean trySetNumber(int row, int col, int number) {
 		// Är siffran unik i rad, col, och ruta
 		// är det en siffra mellan 1-9
-		if (rowCheck(row, number) && colCheck(col, number) && sqrCheck(row, col, number)) {
-			return true;
-		}
-		return false;
-	}
+		return (rowCheck(row, number) && colCheck(col, number) && sqrCheck(row, col, number)); 
 
+	}
+	
 	private boolean rowCheck(int row, int number) {
-		return false;
+		for (int i = 0; i < 9; i++) {
+			if (sudoMx[row][i] == number) {
+				return false;
+			}
+		}
+		return true;
 	}
 
 	private boolean colCheck(int col, int number) {
-		return false;
+		for (int i = 0; i < 9; i++) {
+			if (sudoMx[i][col] == number) {
+				return false;
+			}
+		}
+		return true;
 	}
 
 	private boolean sqrCheck(int row, int col, int number) {
-		return false;
+		int startSqrRow = (row/3) * 3; //heltalsdivision * 3 ger platserna 0,3,6
+		int startSqrCol = (col/3) * 3;
+		
+		for(int i = startSqrRow; i < startSqrRow + 3; i++) {
+			for (int j = startSqrCol; j < startSqrCol + 3; j++) {
+				if(sudoMx[i][j]==number) {
+					return false;
+				}
+			}
+		}
+		
+		return true;
 	}
 
 	@Override
 	public int getNumber(int row, int col) {
-		// TODO Auto-generated method stub
 		return sudoMx[row][col];
 	}
 
