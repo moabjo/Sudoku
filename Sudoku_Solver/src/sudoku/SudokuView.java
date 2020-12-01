@@ -117,7 +117,9 @@ public class SudokuView extends JFrame {
 														// så fixar vi det genom
 														// att skicka in en
 														// nolla
-						board.setNumber(j, i, 0);
+						
+						///Varför skulle man sätta j, i???
+						board.setNumber(i, j, 0);
 					}
 
 				}

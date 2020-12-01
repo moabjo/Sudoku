@@ -1,6 +1,6 @@
 package sudoku;
 
-import sudoku.SudokuSolverInterface.SudokuSolver;
+import sudoku.SudokuSolver;
 
 public class SudokuApplication {
 
@@ -11,6 +11,7 @@ public class SudokuApplication {
 		// det här är ett lösbart sudoku
 		sudokuSolver.setNumber(0, 3, 8);
 		sudokuSolver.setNumber(0, 5, 1);
+		
 		sudokuSolver.setNumber(1, 6, 4);
 		sudokuSolver.setNumber(1, 7, 3);
 		sudokuSolver.setNumber(2, 0, 5);
@@ -26,23 +27,11 @@ public class SudokuApplication {
 		sudokuSolver.setNumber(7, 3, 4);
 		sudokuSolver.setNumber(8, 3, 2);
 		sudokuSolver.setNumber(8, 6, 6);
-		
-		//Om man klickar på clear:
-		//sudokuSolver.clear();
-		
-		//Om man klickar på solve: 
-		
-		//Kolla om det går att lösa
+
 		System.out.print(sudokuSolver.solve());
 		
-		
-//		if (sudokuSolver.solve()) {
-//			//Det här ska vi presentera i grafiska:
-//			System.out.println(sudokuSolver.getNumbers());
-//		} else {
-//			
-//			//Skriv ut meddelande; "Går ej att lösa"
-//		}
+
+
 		
 		new SudokuView("Sudoku Solver", 500, 500);
 	}

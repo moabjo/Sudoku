@@ -1,8 +1,7 @@
 package sudoku;
 
 
-public class SudokuSolverInterface {
-	public interface SudokuSolver {
+public interface SudokuSolver {
 		/** Tömmer hela sudokut */
 		void clear();
 
@@ -59,4 +58,4 @@ public class SudokuSolverInterface {
 	 * javadoc-kommentarer (Påbörjat, kommentaren till setNumber är nästan
 	 * klar.)
 	 */
-}
+
