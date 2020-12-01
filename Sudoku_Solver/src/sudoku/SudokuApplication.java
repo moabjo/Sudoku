@@ -26,15 +26,15 @@ public class SudokuApplication {
 		sudokuSolver.setNumber(7, 3, 4);
 		sudokuSolver.setNumber(8, 3, 2);
 		sudokuSolver.setNumber(8, 6, 6);
-		
-		//Om man klickar på clear:
-		//sudokuSolver.clear();
-		
-		//Om man klickar på solve: 
-		
-		//Kolla om det går att lösa
-		System.out.print(sudokuSolver.solve());
-		
+//		
+//		//Om man klickar på clear:
+//		//sudokuSolver.clear();
+//		
+//		//Om man klickar på solve: 
+//		
+//		//Kolla om det går att lösa
+//		System.out.print(sudokuSolver.solve());
+//		
 		
 //		if (sudokuSolver.solve()) {
 //			//Det här ska vi presentera i grafiska:
@@ -45,6 +45,15 @@ public class SudokuApplication {
 //		}
 		
 		new SudokuView("Sudoku Solver", 500, 500);
+		sudokuSolver.solve();
+		int[][] board  = sudokuSolver.getNumbers();
+		for(int i = 0; i<board.length; i++) {
+			for(int j = 0; j<board.length;j++) {
+				System.out.print(board[i][j]);
+			}
+			System.out.println();
+		}
+		
 	}
 	
 	
