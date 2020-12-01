@@ -34,6 +34,8 @@ public class SudokuApplication {
 		
 		//Kolla om det går att lösa
 		System.out.print(sudokuSolver.solve());
+		
+		
 //		if (sudokuSolver.solve()) {
 //			//Det här ska vi presentera i grafiska:
 //			System.out.println(sudokuSolver.getNumbers());
@@ -41,6 +43,8 @@ public class SudokuApplication {
 //			
 //			//Skriv ut meddelande; "Går ej att lösa"
 //		}
+		
+		new SudokuView("Sudoku Solver", 500, 500);
 	}
 	
 	
