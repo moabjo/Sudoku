@@ -28,12 +28,31 @@ public class SudokuApplication {
 		sudokuSolver.setNumber(8, 3, 2);
 		sudokuSolver.setNumber(8, 6, 6);
 
+
 		System.out.print(sudokuSolver.solve());
 		
 
 
+//		
+//		//Om man klickar på clear:
+//		//sudokuSolver.clear();
+//		
+//		//Om man klickar på solve: 
+//		
+//		//Kolla om det går att lösa
+//		System.out.print(sudokuSolver.solve());
+//		
 		
-		new SudokuView("Sudoku Solver", 500, 500);
+//		if (sudokuSolver.solve()) {
+//			//Det här ska vi presentera i grafiska:
+//			System.out.println(sudokuSolver.getNumbers());
+//		} else {
+//			
+//			//Skriv ut meddelande; "Går ej att lösa"
+//		}
+
+		
+		
 	}
 	
 	
