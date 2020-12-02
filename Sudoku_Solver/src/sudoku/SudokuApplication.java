@@ -6,7 +6,7 @@ public class SudokuApplication {
 
 	public static void main(String[] args) {
 		SudokuSolver sudokuSolver = new SudokuMain();
-		SudokuView window = new SudokuView("Sudoku", 250, 250);
+		SudokuView window = new SudokuView("Sudoku", 500, 500);
 		
 		
 		//Lägg in lite siffror

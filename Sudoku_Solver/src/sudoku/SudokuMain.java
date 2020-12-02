@@ -1,14 +1,11 @@
 package sudoku;
 
-import sudoku.SudokuSolver;
-
 public class SudokuMain implements SudokuSolver {
 
 	private int[][] sudoMx;
 
 	public SudokuMain() {
 		sudoMx = new int[9][9];
-		// Lägg in i matrisen från grafiskt
 		for (int r = 0; r < 9; r++) {
 			for (int c = 0; c < 9; c++) {
 				sudoMx[r][c] = 0;
@@ -17,7 +14,7 @@ public class SudokuMain implements SudokuSolver {
 
 	}
 
-	// Konstruktor för testning
+	// Konstruktor för ett förifyllt bräde
 	public SudokuMain(int[][] numbers) {
 		sudoMx = numbers;
 
@@ -106,7 +103,6 @@ public class SudokuMain implements SudokuSolver {
 	}
 
 	private boolean solve(int r, int c) { // Rekursiv metod
-
 		if (sudoMx[r][c] == 0) {// Rutan är tom
 
 			if (r == 8 && c == 8) { // Sista rutan i sudokut
@@ -159,6 +155,7 @@ public class SudokuMain implements SudokuSolver {
 	}
 
 	// Vi gör ett mock-objekt för att man inte ska kunna ändra den privata matrisen
+	//används den här någonsin? vi använder ju inte den för att fylla brädet i SudokuView t.ex.
 	@Override
 	public int[][] getNumbers() {
 		int[][] mockSudoMx = new int[9][9];
@@ -171,6 +168,7 @@ public class SudokuMain implements SudokuSolver {
 	}
 
 	// Den här metoden känns inte så jättebra att ha tbh
+	//nej jag håller med vi använder den aldrig /moa
 	@Override
 	public void setNumbers(int[][] numbers) {
 		sudoMx = numbers;
