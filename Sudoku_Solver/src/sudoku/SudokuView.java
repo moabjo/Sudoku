@@ -19,6 +19,7 @@ public class SudokuView extends JFrame {
 	private OneDigitField[][] fields;
 	private JLabel messagePromt;
 	private SudokuMain board;
+	
 
 	public SudokuView(String title, int width, int height) {
 
@@ -35,9 +36,10 @@ public class SudokuView extends JFrame {
 		messagePromt.setHorizontalAlignment(SwingConstants.CENTER);
 		messagePromt.setPreferredSize(new Dimension(this.getWidth(), 30));
 		messagePromt.setBackground(new Color(255, 150, 255));
-		messagePromt.setForeground(new Color(255, 150, 255));
-		messagePromt.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 18));
-		messagePromt.setText("Sudoku solver");
+		messagePromt.setForeground(new Color(69, 69, 69));
+		messagePromt.setFont(new Font(Font.DIALOG_INPUT, Font.PLAIN, 20));
+		messagePromt.setText("Welcome to the Sudoku solver");
+		//messagePromt.set
 		/*****************************/
 
 		/** inställningar för huvudfönstret **/
@@ -59,9 +61,9 @@ public class SudokuView extends JFrame {
 
 				/** de olika panelerna delas av med fina färger **/
 				if (i < 3 && (j < 3 || j >= 6) || i >= 3 && i < 6 && j >= 3 && j < 6 || i >= 6 && (j < 3 || j >= 6)) {
-					fields[i][j].setBackground(new Color(255, 250, 255));
+					fields[i][j].setBackground(new Color(133, 169, 132));
 				} else {
-					fields[i][j].setBackground(new Color(255, 235, 255));
+					fields[i][j].setBackground(new Color(217, 218, 207));
 				}
 				/**************************************************************/
 
