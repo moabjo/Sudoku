@@ -20,7 +20,10 @@ public class SudokuView extends JFrame {
 	private JLabel messagePromt;
 	private SudokuMain board;
 	
-
+	/*
+	 * Klass för att skapa det grafiska gränssnittet till 
+	 * sudokut
+	 * */
 	public SudokuView(String title, int width, int height) {
 
 		/** initierar alla komponenter **/
