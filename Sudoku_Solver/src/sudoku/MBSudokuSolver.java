@@ -1,7 +1,7 @@
 package sudoku;
 
 
-public class SudokuMain implements SudokuSolver {
+public class MBSudokuSolver implements SudokuSolver {
 	
 	/**
 	 * Sudokulösare
@@ -11,7 +11,7 @@ public class SudokuMain implements SudokuSolver {
 
 	private int[][] sudoMx;
 
-	public SudokuMain() {
+	public MBSudokuSolver() {
 		sudoMx = new int[9][9];
 		for (int r = 0; r < 9; r++) {
 			for (int c = 0; c < 9; c++) {
@@ -22,7 +22,7 @@ public class SudokuMain implements SudokuSolver {
 	}
 
 	// Konstruktor för testning
-	public SudokuMain(int[][] numbers) {
+	public MBSudokuSolver(int[][] numbers) {
 		sudoMx = numbers;
 
 	}

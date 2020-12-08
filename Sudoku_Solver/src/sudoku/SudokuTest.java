@@ -9,7 +9,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.jupiter.api.Test;
 
-class Sudoku_Test {
+class SudokuTest {
 	private int[][] board;
 	private SudokuSolver sudoku;
 
@@ -32,7 +32,7 @@ class Sudoku_Test {
 				{ 0, 0, 0, 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0, 0, 0, 0 },
 				{ 0, 0, 0, 0, 0, 0, 0, 0, 0 } };
 
-		sudoku = new SudokuMain(board);
+		sudoku = new MBSudokuSolver(board);
 		assertTrue(sudoku.solve()); // ett tomt bräde fylls automatiskt med nollor
 	}
 
@@ -42,7 +42,7 @@ class Sudoku_Test {
 				{ 1, 0, 2, 5, 0, 0, 0, 0, 0 }, { 0, 0, 0, 2, 1, 0, 0, 9, 0 }, { 0, 5, 0, 0, 0, 0, 6, 0, 0 },
 				{ 6, 0, 0, 0, 0, 0, 0, 2, 8 }, { 4, 1, 0, 6, 0, 8, 0, 0, 0 }, { 8, 6, 0, 0, 3, 0, 1, 0, 0 },
 				{ 0, 0, 0, 0, 0, 0, 4, 0, 0 } };
-		sudoku = new SudokuMain(board);
+		sudoku = new MBSudokuSolver(board);
 		assertTrue(sudoku.solve());
 
 	}
@@ -50,7 +50,7 @@ class Sudoku_Test {
 	@Test
 	public void testUnsolvableSudoku() {
 
-		sudoku = new SudokuMain();
+		sudoku = new MBSudokuSolver();
 
 		sudoku.setNumber(0, 0, 1);
 		sudoku.setNumber(0, 1, 2);
@@ -63,7 +63,7 @@ class Sudoku_Test {
 	@Test
 	public void testClear() {
 		Random rand = new Random(1);
-		sudoku = new SudokuMain();
+		sudoku = new MBSudokuSolver();
 
 		//Fyll i random nummer på alla rutor
 		for (int r = 0; r<9; r++) {

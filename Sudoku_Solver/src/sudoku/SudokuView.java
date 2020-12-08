@@ -18,7 +18,7 @@ public class SudokuView extends JFrame {
 	private JPanel boardPanel;
 	private OneDigitField[][] fields;
 	private JLabel messagePromt;
-	private SudokuMain board;
+	private MBSudokuSolver board;
 	
 	/*
 	 * Klass för att skapa det grafiska gränssnittet till 
@@ -30,7 +30,7 @@ public class SudokuView extends JFrame {
 		frame = new JFrame(title);
 		boardPanel = new JPanel();
 		buttonPanel = new JPanel();
-		board = new SudokuMain();
+		board = new MBSudokuSolver();
 		fields = new OneDigitField[9][9];
 		messagePromt = new JLabel("message promt");
 		/*****************************/
@@ -222,7 +222,12 @@ private class OneDigitField extends JTextField {
 			fb.replace(offset, length, str, attr);
 		}
 	}
+	
 
+}
+public static void main(String[] args) {
+	//SudokuSolver sudokuSolver = new SudokuMain();
+	SudokuView window = new SudokuView("Sudoku", 500, 500);
 }
 
 }
