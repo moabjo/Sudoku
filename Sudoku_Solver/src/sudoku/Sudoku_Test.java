@@ -1,6 +1,9 @@
 package sudoku;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.jupiter.api.Assertions.*;
+
+import java.util.Random;
 
 import org.junit.After;
 import org.junit.Before;
@@ -12,8 +15,8 @@ class Sudoku_Test {
 
 	@Before
 	public void setUp() {
-		board = new int[9][9];
-		sudoku = new SudokuMain(board);
+//		board = new int[9][9];
+		// sudoku = new SudokuMain();
 
 	}
 
@@ -24,11 +27,11 @@ class Sudoku_Test {
 
 	@Test
 	public void testEmptySudoku() {
-		board = new int [][]{ { 0, 0, 0, 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-			{ 0, 0, 0, 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-			{ 0, 0, 0, 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-			{ 0, 0, 0, 0, 0, 0, 0, 0, 0 } };
-		
+		board = new int[][] { { 0, 0, 0, 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+				{ 0, 0, 0, 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+				{ 0, 0, 0, 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+				{ 0, 0, 0, 0, 0, 0, 0, 0, 0 } };
+
 		sudoku = new SudokuMain(board);
 		assertTrue(sudoku.solve()); // ett tomt bräde fylls automatiskt med nollor
 	}
@@ -43,11 +46,41 @@ class Sudoku_Test {
 		assertTrue(sudoku.solve());
 
 	}
+
 	@Test
 	public void testUnsolvableSudoku() {
-		board = new int [][] {{ 1,2,1}};
-		sudoku = new SudokuMain(board);
+
+		sudoku = new SudokuMain();
+
+		sudoku.setNumber(0, 0, 1);
+		sudoku.setNumber(0, 1, 2);
+		sudoku.setNumber(0, 2, 1);
+
 		assertFalse(sudoku.solve());
+
 	}
+
+	@Test
+	public void testClear() {
+		Random rand = new Random(1);
+		sudoku = new SudokuMain();
+
+		//Fyll i random nummer på alla rutor
+		for (int r = 0; r<9; r++) {
+			for(int c= 0; c<9; c++) {
+				sudoku.setNumber(0, 0, rand.nextInt(9) + 1);
+			}
+		}	
+		
+		sudoku.clear();
+		
+		//Kolla så allt är noll
+		for (int r = 0; r<9; r++) {
+			for(int c= 0; c<9; c++) {
+				assertTrue(sudoku.getNumber(r, c)==0);
+			}
+		}
+	}
+	
 
 }
