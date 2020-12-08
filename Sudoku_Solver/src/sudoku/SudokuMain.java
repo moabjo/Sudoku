@@ -55,6 +55,7 @@ public class SudokuMain implements SudokuSolver {
 	private boolean rowCheck(int row, int number) {
 		for (int i = 0; i < 9; i++) {
 			if (sudoMx[row][i] == number) {
+				System.out.println(row + ", " + i);
 				return false;
 			}
 		}
@@ -64,6 +65,7 @@ public class SudokuMain implements SudokuSolver {
 	private boolean colCheck(int col, int number) {
 		for (int i = 0; i < 9; i++) {
 			if (sudoMx[i][col] == number) {
+				System.out.println(i + ", " + col);
 				return false;
 			}
 		}
@@ -77,6 +79,7 @@ public class SudokuMain implements SudokuSolver {
 		for (int r = startSqrRow; r < startSqrRow + 3; r++) {
 			for (int c = startSqrCol; c < startSqrCol + 3; c++) {
 				if (sudoMx[r][c] == number) {
+					System.out.println(r + ", " + c);
 					return false;
 				}
 			}
@@ -98,8 +101,32 @@ public class SudokuMain implements SudokuSolver {
 
 	@Override
 	public boolean solve() {
+		if (isAllowed()) {
+			return solve(0, 0);
+		} else {
+			return false;
+		}
 
-		return solve(0, 0);
+	}
+
+	/*
+	 * Kollar så att alla inskrivna siffor inte bryter mot reglerna
+	 * */
+	private boolean isAllowed() {
+
+		for (int r = 0; r < 9; r++) {
+			for (int c = 0; c < 9; c++) {
+				if (sudoMx[r][c] != 0) {
+					if (!trySetNumber(r, c, sudoMx[r][c])) {
+
+						return false;
+					}
+				}
+
+			}
+		}
+
+		return true;
 	}
 
 	private boolean solve(int r, int c) { // Rekursiv metod
@@ -122,10 +149,10 @@ public class SudokuMain implements SudokuSolver {
 				if (trySetNumber(r, c, i)) { // Går det att sätta in i
 					sudoMx[r][c] = i; // I så fall sätt in i
 					if (c < 8) {
-						if (solve(r, c + 1)) {// Rekursivt anrop till ästa ruta (samma rad)
+						if (solve(r, c + 1)) {// Rekursivt anrop till nästa ruta (samma rad)
 							return true;
 						}
-					} else if (solve(r + 1, 0)) {// Rekursivt anrop till ästa ruta (nästa rad)
+					} else if (solve(r + 1, 0)) {// Rekursivt anrop till nästa ruta (nästa rad)
 						return true;
 					}
 				}
@@ -144,9 +171,9 @@ public class SudokuMain implements SudokuSolver {
 
 			if (trySetNumber(r, c, sudoMx[r][c])) { // Kollar vi om värdet får vara där
 				if (c < 8) {
-					return solve(r, c + 1); // Rekursivt anrop till ästa ruta (samma rad)
+					return solve(r, c + 1); // Rekursivt anrop till nästa ruta (samma rad)
 				} else {
-					return solve(r + 1, 0); // Rekursivt anrop till ästa ruta (nästa rad)
+					return solve(r + 1, 0); // Rekursivt anrop till nästa ruta (nästa rad)
 				}
 			}
 		}
@@ -155,7 +182,8 @@ public class SudokuMain implements SudokuSolver {
 	}
 
 	// Vi gör ett mock-objekt för att man inte ska kunna ändra den privata matrisen
-	//används den här någonsin? vi använder ju inte den för att fylla brädet i SudokuView t.ex.
+	// används den här någonsin? vi använder ju inte den för att fylla brädet i
+	// SudokuView t.ex.
 	@Override
 	public int[][] getNumbers() {
 		int[][] mockSudoMx = new int[9][9];
@@ -168,7 +196,7 @@ public class SudokuMain implements SudokuSolver {
 	}
 
 	// Den här metoden känns inte så jättebra att ha tbh
-	//nej jag håller med vi använder den aldrig /moa
+	// nej jag håller med vi använder den aldrig /moa
 	@Override
 	public void setNumbers(int[][] numbers) {
 		sudoMx = numbers;

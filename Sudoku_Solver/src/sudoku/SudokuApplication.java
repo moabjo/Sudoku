@@ -5,7 +5,7 @@ import sudoku.SudokuSolver;
 public class SudokuApplication {
 
 	public static void main(String[] args) {
-		SudokuSolver sudokuSolver = new SudokuMain();
+		//SudokuSolver sudokuSolver = new SudokuMain();
 		SudokuView window = new SudokuView("Sudoku", 500, 500);
 		
 		
@@ -31,7 +31,7 @@ public class SudokuApplication {
 //		sudokuSolver.setNumber(8, 6, 6);
 
 
-		System.out.print(sudokuSolver.solve());
+		//System.out.print(sudokuSolver.solve());
 		
 
 
