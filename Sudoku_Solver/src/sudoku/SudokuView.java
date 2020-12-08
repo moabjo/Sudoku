@@ -160,7 +160,7 @@ private class ClearButton extends JButton implements ActionListener {
 		for (int i = 0; i < 9; i++) {
 			for (int j = 0; j < 9; j++) {
 				board.setNumber(i, j, 0);
-				fields[i][j].setText("0");
+				fields[i][j].setText("");
 			}
 		
 		}
@@ -184,7 +184,7 @@ private class OneDigitField extends JTextField {
 	 * Creates a text field to display only one character.
 	 */
 	public OneDigitField() {
-		super("0");
+		super("");
 		((AbstractDocument) this.getDocument()).setDocumentFilter(new OneDigitFilter());
 	}
 
