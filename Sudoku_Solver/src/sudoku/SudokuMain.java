@@ -21,12 +21,13 @@ public class SudokuMain implements SudokuSolver {
 
 	}
 
-	// Konstruktor för ett förifyllt bräde
+	// Konstruktor för testning
 	public SudokuMain(int[][] numbers) {
 		sudoMx = numbers;
 
 	}
 
+	
 	@Override
 	public void clear() {
 		for (int r = 0; r < 9; r++) {
@@ -236,5 +237,6 @@ public class SudokuMain implements SudokuSolver {
 		sudoMx = numbers;
 
 	}
+
 
 }
