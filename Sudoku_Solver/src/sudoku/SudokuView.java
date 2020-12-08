@@ -37,7 +37,7 @@ public class SudokuView extends JFrame {
 
 		/** inställningar för meddelanderutan **/
 		messagePromt.setHorizontalAlignment(SwingConstants.CENTER);
-		messagePromt.setPreferredSize(new Dimension(this.getWidth(), 30));
+		messagePromt.setPreferredSize(new Dimension(this.getWidth(), 50));
 		messagePromt.setBackground(new Color(255, 150, 255));
 		messagePromt.setForeground(new Color(69, 69, 69));
 		messagePromt.setFont(new Font(Font.DIALOG_INPUT, Font.PLAIN, 20));
@@ -92,10 +92,9 @@ public class SudokuView extends JFrame {
 
 	/**
 	 * SolveButton försöker lösa
-	 * sudokut när man trycker på den.
+	 * sudokut när man trycker på knappen.
 	 * 
 	 * @param name
-	 *            namnet som står inne i knappen
 	 */
 	@SuppressWarnings("serial")
 	private class SolveButton extends JButton implements ActionListener {
@@ -131,9 +130,9 @@ public class SudokuView extends JFrame {
 								i, j)));
 					}
 				}
-				messagePromt.setText("The sudoku was solvable!");
+				messagePromt.setText("<html><body><center>The sudoku was solvable!<br/>The result is shown below</center></body></html>");
 			} else {
-				messagePromt.setText("The sudoku was unsolvable");
+				messagePromt.setText("<html><body><center>The sudoku was unsolvable<br/> Remember the rules of sudoku! :)</center></body></html>");
 			}
 
 		}
@@ -143,7 +142,7 @@ public class SudokuView extends JFrame {
 /**
  * ClearButton är en knapp som nollställer sudokut
  * 
- * @param name namnet som står inne i knappen
+ * @param name 
  */
 @SuppressWarnings("serial")
 private class ClearButton extends JButton implements ActionListener {
@@ -164,7 +163,7 @@ private class ClearButton extends JButton implements ActionListener {
 			}
 		
 		}
-		messagePromt.setText("Sudoku solver");
+		messagePromt.setText("Welcome to the Sudoku solver");
 
 	}
 
@@ -202,6 +201,7 @@ private class OneDigitField extends JTextField {
 			if (!str.isEmpty() && !Character.isDigit(str.charAt(0))) {
 				return;
 			}
+			
 			fb.insertString(offset, str, attr);
 		}
 
@@ -211,9 +211,14 @@ private class OneDigitField extends JTextField {
 				return;
 			}
 			if (!str.isEmpty() && !Character.isDigit(str.charAt(0))) {
-				messagePromt.setText("Ogiltligt tecken");
+				messagePromt.setText("<html><body><center> Invalid character<br/>Choose a number between 1 and 9 instead!</center></body></html>");
 				return;
 			}
+			if(str.equals("0")) {
+				messagePromt.setText("<html><body><center> 0 is not valid <br/>Choose a number between 1 and 9 instead!</center></body></html>");
+				return;
+			}
+			messagePromt.setText("Welcome to the Sudoku solver");
 			fb.replace(offset, length, str, attr);
 		}
 	}
