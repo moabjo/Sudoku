@@ -18,7 +18,7 @@ public class SudokuView extends JFrame {
 	private JPanel boardPanel;
 	private OneDigitField[][] fields;
 	private JLabel messagePromt;
-	private MBSudokuSolver board;
+	private SudokuSolver board;
 	
 	/*
 	 * Klass för att skapa det grafiska gränssnittet till 
