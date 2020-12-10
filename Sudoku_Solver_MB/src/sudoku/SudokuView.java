@@ -115,7 +115,7 @@ public class SudokuView extends JFrame {
 					try {
 						board.setNumber(i, j,
 								Integer.parseInt(fields[i][j].getText()));
-					} catch (NumberFormatException e1) { //står det ingenting annat än 0 stoppar vi in 0
+					} catch (NumberFormatException e1) { //står det ingenting stoppar vi in 0
 						board.setNumber(i, j, 0);
 					}
 
@@ -226,7 +226,7 @@ private class OneDigitField extends JTextField {
 
 }
 public static void main(String[] args) {
-	//SudokuSolver sudokuSolver = new SudokuMain();
+	
 	SudokuView window = new SudokuView("Sudoku", 500, 500);
 }
 
