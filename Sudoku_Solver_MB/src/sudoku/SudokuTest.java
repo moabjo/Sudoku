@@ -82,5 +82,41 @@ class SudokuTest {
 		}
 	}
 	
+	@Test
+	public void testGetNumbers() {
+		board = new int[][] { { 0, 0, 8, 0, 0, 9, 0, 6, 2 }, { 0, 0, 0, 0, 0, 0, 0, 0, 5 },
+			{ 1, 0, 2, 5, 0, 0, 0, 0, 0 }, { 0, 0, 0, 2, 1, 0, 0, 9, 0 }, { 0, 5, 0, 0, 0, 0, 6, 0, 0 },
+			{ 6, 0, 0, 0, 0, 0, 0, 2, 8 }, { 4, 1, 0, 6, 0, 8, 0, 0, 0 }, { 8, 6, 0, 0, 3, 0, 1, 0, 0 },
+			{ 0, 0, 0, 0, 0, 0, 4, 0, 0 } };
+		sudoku = new MBSudokuSolver(board);
+		int[][] matrix = new int[9][9];
+		matrix = sudoku.getNumbers();
+		
+		for (int r = 0; r<9; r++) {
+			for(int c= 0; c<9; c++) {
+				assertTrue(board[r][c] == matrix[r][c]);
+			}
+		}
+	
+	}
+	
+	@Test
+	public void testSetNumbers() {
+		board = new int[][] { { 0, 0, 8, 0, 0, 9, 0, 6, 2 }, { 0, 0, 0, 0, 0, 0, 0, 0, 5 },
+			{ 1, 0, 2, 5, 0, 0, 0, 0, 0 }, { 0, 0, 0, 2, 1, 0, 0, 9, 0 }, { 0, 5, 0, 0, 0, 0, 6, 0, 0 },
+			{ 6, 0, 0, 0, 0, 0, 0, 2, 8 }, { 4, 1, 0, 6, 0, 8, 0, 0, 0 }, { 8, 6, 0, 0, 3, 0, 1, 0, 0 },
+			{ 0, 0, 0, 0, 0, 0, 4, 0, 0 } };
+		sudoku = new MBSudokuSolver();
+		
+		sudoku.setNumbers(board);
+		
+		for (int r = 0; r<9; r++) {
+			for(int c= 0; c<9; c++) {
+				assertTrue(board[r][c] == sudoku.getNumber(r, c));
+			}
+		}
+	}
+		
+		
 
 }

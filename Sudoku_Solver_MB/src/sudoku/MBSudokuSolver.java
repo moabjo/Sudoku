@@ -1,16 +1,19 @@
 package sudoku;
 
-
 public class MBSudokuSolver implements SudokuSolver {
-	
+
 	/**
 	 * Sudokulösare
+	 * 
 	 * @author Moa Björkman & Blenda Öhman
 	 *
 	 */
 
 	private int[][] sudoMx;
 
+	/**
+	 * Skapar ett tomt sudokubräde där alla rutor har värdet 0.
+	 */
 	public MBSudokuSolver() {
 		sudoMx = new int[9][9];
 		for (int r = 0; r < 9; r++) {
@@ -21,13 +24,18 @@ public class MBSudokuSolver implements SudokuSolver {
 
 	}
 
-	// Konstruktor för testning
+	/**
+	 * Skapar ett sudokubräde med samma värden som  i matrisen numbers.
+	 * @param numbers
+	 */
 	public MBSudokuSolver(int[][] numbers) {
 		sudoMx = numbers;
 
 	}
-
 	
+	/**
+	 * Rensar hela brädet och sätter alla rutor till värdet 0.
+	 */
 	@Override
 	public void clear() {
 		for (int r = 0; r < 9; r++) {
@@ -37,8 +45,10 @@ public class MBSudokuSolver implements SudokuSolver {
 		}
 
 	}
+
 	/**
 	 * setNumber sätter in numret number på platsen [row][col] i matrisen
+	 * 
 	 * @param row
 	 * @param col
 	 * @param number
@@ -52,6 +62,7 @@ public class MBSudokuSolver implements SudokuSolver {
 
 	/**
 	 * trySetNumber ser om numret number uppfyller reglerna för sudoku
+	 * 
 	 * @param row
 	 * @param col
 	 * @param number
@@ -106,22 +117,33 @@ public class MBSudokuSolver implements SudokuSolver {
 		return true;
 	}
 
+	/**
+	 * Hämtar värdet i matrisen med radnummer row och kolumnnumret col.
+	 * 
+	 * @param row
+	 * @param col
+	 * @return Värdet i matrisen
+	 */
 	@Override
 	public int getNumber(int row, int col) {
 		return sudoMx[row][col];
 	}
 
+	/**
+	 * Tar bort siffran på radnummer row och kolumnnumret col och sätter till 0.
+	 * 
+	 * @param row
+	 * @param col
+	 */
 	@Override
 	public void removeNumber(int row, int col) {
 		sudoMx[row][col] = 0;
 
 	}
 
-
-
 	/*
 	 * Kollar så att alla inskrivna siffor inte bryter mot reglerna
-	 * */
+	 */
 	private boolean isAllowed() {
 
 		for (int r = 0; r < 9; r++) {
@@ -138,9 +160,10 @@ public class MBSudokuSolver implements SudokuSolver {
 
 		return true;
 	}
-	
+
 	/**
 	 * Solve() är en rekursiv metod som löser ett sudokubräde
+	 * 
 	 * @return true om sudokut är lösbart, false annars
 	 */
 	@Override
@@ -153,13 +176,13 @@ public class MBSudokuSolver implements SudokuSolver {
 
 	}
 
+	/*
+	 * Privat rekursiv metod för att lösa sudokut.
+	 * */
 	private boolean solve(int r, int c) { // Rekursiv hjälpmetod
 		if (sudoMx[r][c] == 0) {// Om rutan är tom
-
 			if (r == 8 && c == 8) { // Sista rutan i sudokut
-
 				for (int i = 1; i < 10; i++) {
-
 					if (trySetNumber(r, c, i)) { // Om i går att sätta in
 						sudoMx[r][c] = i;
 						return true; // Sudokut är löst
@@ -169,7 +192,6 @@ public class MBSudokuSolver implements SudokuSolver {
 			}
 
 			for (int i = 1; i < 10; i++) {
-
 				if (trySetNumber(r, c, i)) { // uppfyller i reglerna för sudoku
 					sudoMx[r][c] = i; // I så fall sätt in i
 					if (c < 8) {
@@ -180,7 +202,6 @@ public class MBSudokuSolver implements SudokuSolver {
 						return true;
 					}
 				}
-
 			}
 
 			// Hit kommer vi om vi måste gå tillbaka. Inget värde på denna ruta gick :(
@@ -188,11 +209,9 @@ public class MBSudokuSolver implements SudokuSolver {
 			return false;
 
 		} else { // Rutan är ifylld
-
 			if (r == 8 && c == 8) { // Sista rutan, kolla om värdet får vara där
 				return trySetNumber(r, c, sudoMx[r][c]);
 			}
-
 			if (trySetNumber(r, c, sudoMx[r][c])) { // Kollar vi om värdet får vara där
 				if (c < 8) {
 					return solve(r, c + 1); // Rekursivt anrop till nästa ruta (samma rad)
@@ -205,14 +224,9 @@ public class MBSudokuSolver implements SudokuSolver {
 		return false;
 	}
 
-	// Vi gör ett mock-objekt för att man inte ska kunna ändra den privata matrisen
-	// används den här någonsin? vi använder ju inte den för att fylla brädet i
-	// SudokuView t.ex.
-	
-
-	/**
-	 * getNumbers används aldrig i vårt program 
-	 * 
+	/*Vi gör ett mock-objekt för att man inte ska kunna ändra den privata matrisen
+	 * används den här någonsin? vi använder ju inte den för att fylla brädet i
+	 * SudokuView t.ex.
 	 */
 	@Override
 	public int[][] getNumbers() {
@@ -225,18 +239,14 @@ public class MBSudokuSolver implements SudokuSolver {
 		return mockSudoMx;
 	}
 
-	// Den här metoden känns inte så jättebra att ha tbh
-	// nej jag håller med vi använder den aldrig /moa
-	
 	/**
-	 * setNumbers används aldrig i vårt program 
-	 * 
+	 * Sätter brädets matris till matrisen numbers.
+	 * @param numbers
 	 */
 	@Override
 	public void setNumbers(int[][] numbers) {
 		sudoMx = numbers;
 
 	}
-
 
 }
